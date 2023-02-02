@@ -1,9 +1,17 @@
+import operation.Component;
+import parser.ExpressionParser;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Component one = new Division(new NumberComponent(5), new NumberComponent(4));
-        System.out.println(one.calculate());
-        Component two = new Sum(new NumberComponent(1), new Sum(new NumberComponent(3), new NumberComponent(4)));
-        System.out.println(two.calculate());
+        System.out.print("Input expression: ");
+        Scanner scanner = new Scanner(System.in);
+        String expr = scanner.nextLine();
 
+        Component result = ExpressionParser.parse(expr);
+
+        System.out.println("Calculate result: " + result.getValue());
+        System.out.println("Compose tree: " + result);
     }
 }
